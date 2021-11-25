@@ -1,6 +1,6 @@
 <template>
   <div >
-    <Header />
+    <Header :menu="linksList" />
     <Main />
     <Footer />
   </div>
@@ -14,6 +14,32 @@ import Footer from './components/Footer';
 
 export default {
   name: 'App',
+  data(){
+    return{
+      linksList:[
+        {
+          url:'/',
+          text: 'Home',
+          current: false
+        },
+        {
+          url:'/prodotti',
+          text: 'Prodotti',
+          current: true
+        },
+        {
+          url:'/chi-siamo',
+          text: 'Chi siamo',
+          current: false
+        },
+        {
+          url:'/contatti',
+          text: 'Contatti',
+          current: false
+        },
+      ]
+    }
+  },
   components: {
     Header,
     Main,

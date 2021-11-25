@@ -5,7 +5,7 @@
     </a>
     <nav>
         <ul>
-          <li v-for="(item, index) in links" :key="index">
+          <li v-for="(item, index) in menu" :key="index">
             <a :class="{active: item.current}" :href="item.url">{{item.text}}</a>
           </li>
         </ul>
@@ -16,30 +16,16 @@
 <script>
 export default {
   name: 'Header',
+  // sintassi alternativa per le props
+  //props:['menu'],
+
+  // sintassi più specifica
+  props:{
+    menu: Array
+  },
   data(){
     return{
-      links:[
-        {
-          url:'/',
-          text: 'Home',
-          current: false
-        },
-        {
-          url:'/prodotti',
-          text: 'Prodotti',
-          current: true
-        },
-        {
-          url:'/chi-siamo',
-          text: 'Chi siamo',
-          current: false
-        },
-        {
-          url:'/contatti',
-          text: 'Contatti',
-          current: false
-        },
-      ]
+    
     }
   }
 
@@ -49,21 +35,21 @@ export default {
 <style lang="scss">
 
 @import '../assets/style/mixins.scss';
+@import '../assets/style/vars.scss';
 
 header{
   text-align: center;
   margin-bottom: 3rem;
 
   ul{
-    @include center();
-    list-style: none;
+    @include setupMunu();
     li a{
       display: inline-block;
       text-decoration: none;
       padding: 1rem;
       &:hover,
       &.active {
-        background-color: cadetblue;
+        background-color: lighten($primary-color, 60%);
       }
     }
   }
